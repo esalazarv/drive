@@ -1,5 +1,4 @@
-from flask import Flask, jsonify
-from app.settings import config
+from flask import Flask
 
 # Import blueprints
 from app.info.routes import info
