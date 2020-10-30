@@ -1,8 +1,7 @@
 from flask import Flask
+from app.settings import config
 app = Flask(__name__)
-
-app.config['DEBUG'] = True
 
 @app.route("/")
 def hello_world():
-    return "It works!"
+    return config.get("app.name") + " works!"
