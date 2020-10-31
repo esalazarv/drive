@@ -9,7 +9,6 @@ services:
             target: ${APP_ENV:-development}
         volumes:
             - ./api:/var/www/html
-            - ./.vscode:/var/www/html/.vscode
         networks: 
             - internal
         ports:

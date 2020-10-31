@@ -1,18 +1,16 @@
-import os
+from os import environ
 from dotenv import load_dotenv
-from dotty_dict import dotty
 
 # Load environment variables from .env file
 load_dotenv()
 
-config = dotty({
-    # App configuration
-    "app": {
-        # App name
-        "name": os.getenv("APP_NAME", "Feedma Drive"),
-        # App version
-        "version": os.getenv("APP_VERSION", "0.0.1"),
-        # App debug mode
-        "debug": os.getenv("APP_DEBUG", False)
-    }
-})
+
+class Config:
+    # Flask variables
+    FLASK_ENV = environ.get("FLASK_ENV", "production")
+    FLASK_DEBUG = environ.get("FLASK_DEBUG", False)
+
+    # Application variables
+    APP_NAME = environ.get("APP_NAME", "Feedma Drive")
+    APP_VERSION = environ.get("APP_VERSION", "0.0.1")
+

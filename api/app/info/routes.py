@@ -1,5 +1,4 @@
-from flask import Blueprint, jsonify
-from app.settings import config
+from flask import current_app, Blueprint, jsonify
 
 info = Blueprint("api", __name__, url_prefix="/api")
 
@@ -7,6 +6,6 @@ info = Blueprint("api", __name__, url_prefix="/api")
 @info.route("/")
 def home():
     return jsonify({
-        "name": config.get("app.name"),
-        "version": config.get("app.version")
+        "name": current_app.config["APP_NAME"],
+        "version": current_app.config["APP_VERSION"]
     })
