@@ -6,11 +6,30 @@ services:
     python:
         build: 
             context: ./api
-            target: ${APP_ENV:-development}
+            target: ${DOCKER_API_STAGE:-development}
         volumes:
             - ./api:/var/www/html
         networks: 
             - internal
         ports:
-            - "${APP_PORT:-5000}:5000"      
+            - "${DOCKER_API_PORT:-5000}:5000"      
         restart: always
+    
+    database:
+        image: mariadb
+        ports:
+        - "${DOCKER_DB_PORT:-3306}:3306"
+        volumes:
+        - database:/var/lib/mysql
+        networks:
+        - internal
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DOCKER_DB_ROOT_PASSWORD:-secret}
+            MYSQL_DATABASE: ${DOCKER_DB_DATABASE:-feedma}
+            MYSQL_USER: ${DOCKER_DB_USERNAME:-feedma}
+            MYSQL_PASSWORD: ${DOCKER_DB_PASSWORD:-secret}
+        restart: always
+
+volumes: 
+    database:
+        driver: local
