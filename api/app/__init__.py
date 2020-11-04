@@ -16,6 +16,9 @@ def application():
     from app.info.routes import info
     app.register_blueprint(info)
 
+    from app.auth.routes import auth
+    app.register_blueprint(auth);
+
     from app.users.routes import users
     app.register_blueprint(users)
     
