@@ -17,3 +17,6 @@ class Config:
     # Third party variables
     SQLALCHEMY_DATABASE_URI = environ.get("SQLALCHEMY_DATABASE_URI", "sqlite:////tmp/test.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = environ.get("SQLALCHEMY_TRACK_MODIFICATIONS", False)
+
+    # Forms
+    WTF_CSRF_ENABLED = False
