@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, EqualTo
-from core.validators import Unique
+from core.support.validators import Unique
 from app.users.models import User
 
 class SignUpForm(FlaskForm):
